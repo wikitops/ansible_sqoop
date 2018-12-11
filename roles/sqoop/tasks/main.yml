@@ -1,0 +1,25 @@
+---
+
+- name: SQOOP | Manage Hadoop deployment
+  import_tasks: hadoop.yml
+  when: sqoop_on_hadoop
+
+- name: SQOOP | Manage Binary deployment
+  import_tasks: binary.yml
+  when: not sqoop_on_hadoop
+
+- name: SQOOP | Configure environment path
+  template:
+    src: etc/profile.d/sqoop.sh.j2
+    dest: /etc/profile.d/sqoop.sh
+    owner: root
+    group: root
+    mode: 0755
+
+- name: SQOOP | Configure Hadoop path
+  template:
+    src: usr/lib/sqoop/conf/sqoop-env.sh.j2
+    dest: "{{ sqoop_source_path }}/sqoop/conf/sqoop-env.sh"
+    owner: root
+    group: root
+    mode: 0644

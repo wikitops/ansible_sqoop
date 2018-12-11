@@ -1,0 +1,17 @@
+---
+
+- name: SQOOP HADOOP | Unarchive Hadoop binary sources
+  unarchive:
+    src: "{{ sqoop_source_hadoop_url }}"
+    dest: "{{ sqoop_source_path }}"
+    owner: root
+    group: root
+    remote_src: yes
+
+- name: SQOOP HADOOP | Manage symlink
+  file:
+    src: "{{ sqoop_source_path }}/sqoop-{{ sqoop_version }}.bin__hadoop-{{ sqoop_hadoop_version }}"
+    dest: "{{ sqoop_source_link }}"
+    owner: root
+    group: root
+    state: link

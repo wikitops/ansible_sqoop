@@ -1,0 +1,17 @@
+---
+
+- name: SQOOP BINARY | Unarchive binaries sources
+  unarchive:
+    src: "{{ sqoop_source_bin_url }}"
+    dest: "{{ sqoop_source_path }}"
+    owner: root
+    group: root
+    remote_src: yes
+
+- name: SQOOP BINARY | Manage symlink
+  file:
+    src: "{{ sqoop_source_path }}/sqoop-{{ sqoop_version }}"
+    dest: "{{ sqoop_source_link }}"
+    owner: root
+    group: root
+    state: link

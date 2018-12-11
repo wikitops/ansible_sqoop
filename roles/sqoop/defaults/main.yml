@@ -1,0 +1,37 @@
+---
+
+###
+# SQOOP
+###
+
+# Version
+sqoop_version: 1.4.7
+
+# Sources
+sqoop_source_hadoop_url: http://apache.forsale.plus/sqoop/{{ sqoop_version }}/sqoop-{{ sqoop_version }}.bin__hadoop-{{ sqoop_hadoop_version }}.tar.gz
+sqoop_source_bin_url: http://apache.forsale.plus/sqoop/{{ sqoop_version }}/sqoop-{{ sqoop_version }}.tar.gz
+sqoop_source_path: /usr/lib
+sqoop_source_link: "{{ sqoop_source_path }}/sqoop"
+
+# Installation
+sqoop_on_hadoop: true
+
+###
+# HADOOP
+###
+
+# Version
+sqoop_hadoop_version: 2.6.0
+
+# Directories
+sqoop_hadoop_common_home: /usr/local/hadoop
+sqoop_hadoop_mapred_home: /usr/local/hadoop
+sqoop_hadoop_hbase_home: ""
+sqoop_hadoop_hive_home: ""
+
+###
+# ZOOKEEPER
+###
+
+# Config directory
+sqoop_zookeeper_dir: ""
